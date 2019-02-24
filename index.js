@@ -39,12 +39,11 @@ const resolvers = {
   },
 
   Mutation: {
-    createTask: async (_, { task }, { dataSources }) => {
-      console.log(task)
+    createTask: async (_, taskParams, { dataSources }) => {
       return await {
         success: true,
         message: 'Successfully add task',
-        task: dataSources.taskRepo.createTask(task)
+        task: dataSources.taskRepo.createTask(taskParams)
       }
     },
 
