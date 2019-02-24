@@ -22,18 +22,18 @@ describe('Task', function() {
     })
   })
 
-  describe('#addTask', function() {
+  describe('#createTask', function() {
     it('adds task', async function() {
       let taskData = { note: 'new task' }
-      let task = await taskRepo.addTask(taskData)
+      let task = await taskRepo.createTask(taskData)
     })
   })
 
-  describe('#removeTask', function() {
+  describe('#deleteTask', function() {
     it('adds task', async function() {
       let taskData = { note: 'new task' }
-      let task = await taskRepo.addTask(taskData)
-      await taskRepo.removeTask(4)
+      let task = await taskRepo.createTask(taskData)
+      await taskRepo.deleteTask(4)
     })
   })
 })

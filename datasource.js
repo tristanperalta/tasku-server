@@ -20,11 +20,11 @@ class TaskRepo {
     return task[0]
   }
 
-  async addTask(taskData) {
+  async createTask(taskData) {
     return await this.client.insert(taskData).from('tasks')
   }
 
-  async removeTask(id) {
+  async deleteTask(id) {
     return await this.client.from('tasks').where({"id": id}).del()
   }
 }

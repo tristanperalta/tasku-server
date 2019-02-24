@@ -40,19 +40,19 @@ const resolvers = {
 
   Mutation: {
     createTask: async (_, { task }, { dataSources }) => {
+      console.log(task)
       return await {
         success: true,
         message: 'Successfully add task',
-        task: dataSources.taskRepo.getTaskById(1)
+        task: dataSources.taskRepo.createTask(task)
       }
     },
 
     deleteTask: async (_, { taskId }, { dataSources }) => {
-      console.log(dataSources.taskRepo)
       return {
         success: true,
         message: `Task ${taskId} has been deleted`,
-        task: dataSources.taskRepo.getTaskById(2)
+        task: dataSources.taskRepo.deleteTask(taskId)
       }
     }
   }
