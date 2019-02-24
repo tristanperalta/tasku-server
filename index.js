@@ -1,5 +1,9 @@
 const { ApolloServer, gql } = require('apollo-server')
-const { taskModel } = require('./datasource')
+const { taskRepo } = require('./datasource')
+const dataSources = () => ({
+  taskRepo
+})
+
 const typeDefs = gql`
   type Task {
     id: ID
@@ -36,24 +40,25 @@ const resolvers = {
 
   Mutation: {
     createTask: async (_, { task }, { dataSources }) => {
-      return {
+      return await {
         success: true,
         message: 'Successfully add task',
-        task: tasks[0]
+        task: dataSources.taskRepo.getTaskById(1)
       }
     },
 
     deleteTask: async (_, { taskId }, { dataSources }) => {
+      console.log(dataSources.taskRepo)
       return {
         success: true,
         message: `Task ${taskId} has been deleted`,
-        task: tasks[1]
+        task: dataSources.taskRepo.getTaskById(2)
       }
     }
   }
 }
 
-const server = new ApolloServer({ typeDefs, resolvers })
+const server = new ApolloServer({ typeDefs, resolvers, dataSources })
 
 server.listen().then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`)

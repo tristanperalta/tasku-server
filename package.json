@@ -15,5 +15,9 @@
     "graphql": "^14.1.1",
     "knex": "^0.16.3",
     "mysql": "^2.16.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.0.1"
   }
 }
