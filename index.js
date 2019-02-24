@@ -1,11 +1,11 @@
 const { ApolloServer, gql } = require('apollo-server')
-const { tasks } = require('./datasource')
-
+const { taskModel } = require('./datasource')
 const typeDefs = gql`
   type Task {
     id: ID
     note: String
-    date: String
+    doneAt: String
+    createdAt: String
   }
 
   type Query {
@@ -31,7 +31,7 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    tasks: () => tasks
+    tasks: () => taskModel.getAllTasks()
   },
 
   Mutation: {
