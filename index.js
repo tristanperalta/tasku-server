@@ -17,7 +17,12 @@ const typeDefs = gql`
     deleteTask(taskId: ID!): TaskResponse!
   }
 
-  type TaskResponse {
+  interface Response {
+    success: Boolean!
+    message: String
+  }
+
+  type TaskResponse implements Response {
     success: Boolean!
     message: String
     task: Task

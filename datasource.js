@@ -1,3 +1,7 @@
+const knex = require('knex')
+const dbConfig = require('./knexfile').development
+const dbClient = knex(dbConfig)
+
 const tasks = [
   {
     id: 1,
