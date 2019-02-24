@@ -5,7 +5,7 @@ describe('Task', function() {
   describe('#getAllTasks', function() {
     it('pull all tasks', async function() {
       let tasks = await taskRepo.getAllTasks()
-      expect(tasks).to.have.length(4)
+      expect(tasks).not.to.be.empty
     })
   })
 
@@ -19,6 +19,21 @@ describe('Task', function() {
       let taskId = 2
       let task = await taskRepo.getTaskById(taskId)
       expect(task.id).to.eq(taskId)
+    })
+  })
+
+  describe('#addTask', function() {
+    it('adds task', async function() {
+      let taskData = { note: 'new task' }
+      let task = await taskRepo.addTask(taskData)
+    })
+  })
+
+  describe('#removeTask', function() {
+    it('adds task', async function() {
+      let taskData = { note: 'new task' }
+      let task = await taskRepo.addTask(taskData)
+      await taskRepo.removeTask(4)
     })
   })
 })

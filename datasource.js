@@ -19,6 +19,14 @@ class TaskRepo {
 
     return task[0]
   }
+
+  async addTask(taskData) {
+    return await this.client.insert(taskData).from('tasks')
+  }
+
+  async removeTask(id) {
+    return await this.client.from('tasks').where({"id": id}).del()
+  }
 }
 
 module.exports = {
