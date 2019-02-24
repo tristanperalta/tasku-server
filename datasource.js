@@ -7,8 +7,8 @@ class Task {
     this.client = dbClient
   }
 
-  getAllTasks() {
-    return [
+  async getAllTasks() {
+    return await [
       { id: 1,
         note: 'Going to work',
         createdAt: (new Date(2019, 1, 1)).toISOString()
