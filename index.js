@@ -35,7 +35,7 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    tasks: () => taskModel.getAllTasks()
+    tasks: () => taskRepo.getAllTasks()
   },
 
   Mutation: {
